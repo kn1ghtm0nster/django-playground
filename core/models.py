@@ -23,3 +23,23 @@ class Author(models.Model):
 
     def __str__(self):
         return f"<Author {self.name}>"
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    author = models.ForeignKey(
+        Author, on_delete=models.CASCADE, related_name='posts')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"<BlogPost {self.title} by {self.author.name}>"
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    posts = models.ManyToManyField(BlogPost, related_name='tags')
+
+    def __str__(self):
+        return f"<Tag {self.name}>"
