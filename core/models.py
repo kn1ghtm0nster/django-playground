@@ -11,7 +11,7 @@ class Person(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"<Person {self.first_name} {self.last_name}>"
+        return f"{self.first_name} {self.last_name}"
 
 
 class Author(models.Model):
@@ -22,7 +22,7 @@ class Author(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"<Author {self.name}>"
+        return f"{self.name}"
 
 
 class BlogPost(models.Model):
@@ -34,7 +34,7 @@ class BlogPost(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"<BlogPost {self.title} by {self.author.name}>"
+        return f"{self.title} by {self.author.name}"
 
 
 class Tag(models.Model):
@@ -42,4 +42,4 @@ class Tag(models.Model):
     posts = models.ManyToManyField(BlogPost, related_name='tags')
 
     def __str__(self):
-        return f"<Tag {self.name}>"
+        return f"{self.name}"
