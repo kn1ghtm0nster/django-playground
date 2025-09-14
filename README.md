@@ -182,6 +182,38 @@ Available commands
 
 ## Models & Relationships
 
+This project uses several Django models to demonstrate core `ORM` concepts and relationships. Below is a summary of each model and how they relate to one another. For full details on Django models and relationships, **please consult the [official Django documentation](https://docs.djangoproject.com/en/5.2/topics/db/models/).**
+
+- `Person`
+
+  - Represents a simple user with fields for first name, last name, age, email, and creation date.
+
+  - No direct relationships to other models in this playground. Mainly a dummy model for understanding specific methods in the Django `ORM`.
+
+- `Author`
+
+  - Represents a blog author, with fields for name, bio, website, email, and creation date.
+
+  - Does NOT inherit from the `Person` class--these are separate concepts for demonstration purposes.
+
+- `BlogPost`
+
+  - Represents a blog post with a title, content, and timestamps.
+
+  - **ForeignKey to `Author`:** Each blog post is written by one author (e.g., `author = models.ForeignKey(Author, ...)`).
+
+- `Tag`
+
+  - Represents a tag that can be attached to blog posts.
+
+  - **ManyToManyField to `BlogPost`:** Each tag can be associated with multiple blog posts, and each blog post can have multiple tags (e.g., `posts = models.ManyToManyField(BlogPost,...)`)
+
+**NOTE:**
+
+- If you're new to the Django framework or unsure about any model field or relationship, I encourage you to **[open the Django docs](https://docs.djangoproject.com/en/5.2/)**.
+
+- This project is for learning--experiment, break things, and use the docs as your primary reference! I do this all the time (even at work).
+
 ## Features
 
 ## API Endpoints
