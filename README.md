@@ -108,11 +108,75 @@ python manage.py create_fake_tags --count 10
 python manage.py runserver
 ```
 
-- **NOTE:** You may need to use `py` instead of `python` in your terminal. Just depends on the shell you're using (i.e. `Powershell` or the `CMD` line terminal).
+- **NOTE:** You may need to use `py` instead of `python` in your terminal. Just depends on the shell you're using (i.e., `Powershell` or the `CMD` line terminal).
 
 - **NOTE II:** **If** you encounter issues with dependencies, ensure **your `Python` version is correct and your `virtual environment` is activated.**
 
 ## Seeding Data
+
+This project provides several custom Django management commands (i.e. commands you can run in the terminal locally) to generate fake data for testing and learning purposes.
+
+**NOTE:** If you ran the `migration` commands when pulling the code down to your local, there will be existing data available. Running these commands **will add** new records unless you use the `--delete` flag.
+
+**NOTE II:** If you're using `WSL`, follow the `MacOS / Linux` commands.
+
+Available commands
+
+- **Create fake people:**
+
+  ```bash
+  # MacOS / Linux
+  python3 manage.py create_fake_people --count 15
+
+  # Windows (default terminal - not recommended)
+  py manage.py create_fake_people --count 15
+  ```
+
+  - Will create 15 fake `Person` objects. Use `--delete` to clear existing people before adding new ones.
+
+  - You can use the `--count` flag without specifying a number; the default is 10.
+
+- **Create fake authors:**
+
+  ```bash
+  # MacOS / Linux
+  python3 manage.py create_fake_authors --count 10
+
+  # Windows (default terminal - not recommended)
+  py python manage.py create_fake_authors --count 10
+  ```
+
+  - Will create 10 fake `Author` objects. Supports the `--delete` flag.
+
+  - You can use the `--count` flag without specifying a number; the default is 10.
+
+- **Create fake blog posts:**
+
+  ```bash
+  # MacOS / Linux
+  python3 manage.py create_fake_blogposts --count 20
+
+  # Windows (default terminal - not recommended)
+  py manage.py create_fake_blogposts --count 20
+  ```
+
+  - Will create 20 fake `BlogPost` objects, each assigned to a random author. Supports the `--delete` flag.
+
+  - You can use the `--count` flag without specifying a number; the default is 10.
+
+- **Create fake tags:**
+
+  ```bash
+  # MacOS / Linux
+  python3 manage.py create_fake_tags --count 10
+
+  # Windows (default terminal - not recommended)
+  py manage.py create_fake_tags --count 10
+  ```
+
+  - Will create 10 fake `Tag` objects and associates them with random blog posts. Supports the `--delete` flag.
+
+  - You can use the `--count` flag without specifying a number; the default is 10.
 
 ## Project Structure
 
